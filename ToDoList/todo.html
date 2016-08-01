@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="todo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  	<script src="todo.js"></script>
+  </head>
+  <body>
+    <div ng-app="todoList">
+	<h1>Todo List</h1>
+		<div ng-controller="todoListController">
+			<input type="text" placeholder="New todo here" ng-model="newTask">
+			<button class="btn-primary" ng-click="addTodo()">Add</button>
+			<ul>
+			    <li ng-repeat="todo in list">
+				<label>
+				    <input type="checkbox" ng-model="todo.done">
+				    <span>{{todo.taskName}}</span>
+				</label>    
+			    </li>
+			</ul>	
+		</div>
+    </div>
+	
+  </body>
+</html>
