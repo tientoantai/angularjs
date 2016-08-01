@@ -14,8 +14,8 @@
 			<ul>
 			    <li ng-repeat="todo in list">
 				<label>
-				    <input type="checkbox" ng-model="todo.done">
-				    <span>{{todo.taskName}}</span>
+				    <input type="checkbox" ng-model="todo.done" ng-click="checkDone()">
+				    <span class="done-{{todo.done}}">{{todo.taskName}}</span>
 				</label>    
 			    </li>
 			</ul>	

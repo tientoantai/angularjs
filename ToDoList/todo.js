@@ -5,4 +5,13 @@ app.controller('todoListController', function($scope) {
 		$scope.list.push({taskName: $scope.newTask, done: false});
 		$scope.newTask = '';
 	};
+
+	$scope.checkDone = function(){
+		//todo is in view 
+		if (this.todo.done){
+			alert (this.todo.taskName + " is done!")
+		}else{
+			alert (this.todo.taskName + " is NOT done!")
+		}
+	}
 });
