@@ -34,4 +34,14 @@ app.controller('todoListController', function($scope) {
 		if ($scope.totalTask() == 0) return 0;
 		return window.Math.round($scope.totalDoneTask() * 100 / $scope.totalTask());
 	};
+
+	$scope.removeDoneTask = function(){
+		var notDoneList = [];
+		angular.forEach($scope.list, function(todo){
+			if ( ! todo.done){
+				notDoneList.push(todo);
+			}
+		});
+		$scope.list = notDoneList;	
+	};
 });
