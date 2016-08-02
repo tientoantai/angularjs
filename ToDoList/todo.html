@@ -11,11 +11,12 @@
 		<div ng-controller="todoListController">
 			<input type="text" placeholder="New todo here" ng-model="newTask">
 			<button class="btn-primary" ng-click="addTodo()">Add</button>
+			<p>{{totalDoneTask()}} task(s) of {{totalTask()}} is done ({{donePercent()}}%)</p>
 			<ul>
-			    <li ng-repeat="todo in list">
+			    <li ng-repeat="task in list">
 				<label>
-				    <input type="checkbox" ng-model="todo.done" ng-click="checkDone()">
-				    <span class="done-{{todo.done}}">{{todo.taskName}}</span>
+				    <input type="checkbox" ng-model="task.done" ng-click="checkDone(task)">
+				    <span class="done-{{task.done}}">{{task.taskName}}</span>
 				</label>    
 			    </li>
 			</ul>	
