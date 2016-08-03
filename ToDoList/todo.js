@@ -4,9 +4,23 @@ app.controller('todoListController', function($scope) {
 		{taskName: "buy Macbook", done: false}, 
 		{taskName: "buy Motobike", done: false}
 	];
+	$scope.errorMessage = "";
+
+	$scope.clearMessage = function(){
+		$scope.errorMessage = "";
+	};
+
 	$scope.addTodo = function(){
-		$scope.list.push({taskName: $scope.newTask, done: false});
-		$scope.newTask = '';
+		angular.forEach($scope.list, function(todo){
+			if ( todo.taskName == $scope.newTask){
+				$scope.errorMessage = "This task has allready added!";
+
+			}
+		});
+		if ( ! $scope.errorMessage){
+			$scope.list.push({taskName: $scope.newTask, done: false});
+			$scope.newTask = '';	
+		}
 	};
 
 	$scope.checkDone = function(todo){
