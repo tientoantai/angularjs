@@ -12,15 +12,22 @@ app.controller('todoListController', function($scope) {
 
 	$scope.addTodo = function(){
 		angular.forEach($scope.list, function(todo){
-			if ( todo.taskName == $scope.newTask){
+			if ( $scope.isExisted(todo) ){
 				$scope.errorMessage = "This task has allready added!";
-
 			}
 		});
-		if ( ! $scope.errorMessage){
+		if ( $scope.canAdd(todo) ){
 			$scope.list.push({taskName: $scope.newTask, done: false});
 			$scope.newTask = '';	
 		}
+	};
+
+	$scope.canAdd = function (todo){
+		return ! $scope.errorMessage;
+	};
+
+	$scope.isExisted = function(todo){
+		return todo.taskName == $scope.newTask && ! $scope.errorMessage;
 	};
 
 	$scope.checkDone = function(todo){
