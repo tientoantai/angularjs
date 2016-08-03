@@ -18,7 +18,8 @@
 				<label>
 				    <input type="checkbox" ng-model="task.done" ng-click="checkDone(task)">
 				    <span class="done-{{task.done}}">{{task.taskName}}</span>
-				</label>    
+				</label>
+				<button ng-click="delete(task)">Delete</button>
 			    </li>
 			</ul>
 			<p style="color:red">{{errorMessage}}</p>

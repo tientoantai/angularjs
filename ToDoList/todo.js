@@ -11,23 +11,31 @@ app.controller('todoListController', function($scope) {
 	};
 
 	$scope.addTodo = function(){
+		if ( ! $scope.newTask ){
+			$scope.errorMessage = "Please enter a task";
+		};
 		angular.forEach($scope.list, function(todo){
 			if ( $scope.isExisted(todo) ){
 				$scope.errorMessage = "This task has allready added!";
+				
 			}
 		});
-		if ( $scope.canAdd(todo) ){
+		if ( $scope.canAdd() ){
 			$scope.list.push({taskName: $scope.newTask, done: false});
 			$scope.newTask = '';	
 		}
 	};
 
-	$scope.canAdd = function (todo){
-		return ! $scope.errorMessage;
+	$scope.canAdd = function (){
+		return ! $scope.errorMessage && $scope.newTask;
 	};
 
 	$scope.isExisted = function(todo){
 		return todo.taskName == $scope.newTask && ! $scope.errorMessage;
+	};
+
+	$scope.delete = function (todo){
+		$scope.list.splice($scope.list.indexOf(todo), 1);
 	};
 
 	$scope.checkDone = function(todo){
